@@ -1,11 +1,12 @@
+
 import org.gradle.kotlin.dsl.*
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.plugin.SpringBootPlugin.*
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.BIN
 
-val springCloudVersion by extra { "Hoxton.RELEASE" }
-val kotlinVersion = "1.3.61"
+val springCloudVersion by extra { "2020.0.1" }
+val kotlinVersion = "1.4.21"
 
 buildscript {
     repositories {
@@ -17,10 +18,10 @@ buildscript {
 
 plugins {
 	idea
-    val kotlinVersion = "1.3.61"
+    val kotlinVersion = "1.4.21"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
-    id("org.springframework.boot") version "2.2.2.RELEASE"
+    id("org.springframework.boot") version "2.4.2"
 }
 apply {
     plugin("io.spring.dependency-management")
@@ -67,6 +68,6 @@ dependencies {
 tasks.withType<Test> { useJUnitPlatform() }
 
 tasks.withType<Wrapper>().configureEach {
-    gradleVersion = "6.0.1"
+    gradleVersion = "6.8.1"
     distributionType = BIN
 }
